@@ -1,0 +1,99 @@
+from pybricks.hubs import PrimeHub
+from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSensor
+from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
+from pybricks.robotics import DriveBase
+from pybricks.tools import wait, StopWatch
+
+hub = PrimeHub()
+
+left_motor = Motor(Port.A,Direction.COUNTERCLOCKWISE)
+
+
+
+
+right_motor = Motor(Port.E,Direction.CLOCKWISE)
+
+right_attachment = Motor(Port.B)
+left_attachment = Motor(Port.F)
+
+robot = DriveBase(left_motor,right_motor, 56, 110)
+
+def right_turn(angle, tspeed=350, thresh= 0.5):
+    hub.imu.reset_heading(0)
+    wait(100)
+    while True:
+        speed = angle - hub.imu.heading()
+        robot.drive(0, speed * tspeed/100)
+        if speed < thresh and speed > 0 - thresh:
+            break
+        wait(50)
+    robot.stop()
+
+def left_turn(angle, tspeed=350, thresh= 1):
+    hub.imu.reset_heading(0)
+    wait(100)
+    while True: 
+        heading = hub.imu.heading()
+        speed = angle - heading
+        robot.drive(0, speed * tspeed/100)  # Same as right_turn, but uses 'turned'
+        if speed < thresh and speed > 0-thresh:
+            break
+        wait(50)
+    robot.stop()
+
+def gyro_straight(distance, speed=300):
+    robot.reset()
+    hub.imu.reset_heading(0)
+    while robot.distance() < distance:
+        error = hub.imu.heading()
+        robot.drive(speed, 6 * (0 - error))
+        wait(10)
+    robot.stop()
+
+def gyro_reverse(distance, speed=300):
+    robot.reset()
+    hub.imu.reset_heading(0)
+    while 0 - robot.distance() < distance:
+        error = hub.imu.heading()
+        robot.drive(0-speed, 6 * (0 - error))
+
+
+        wait(10)
+    robot.stop()
+
+
+left_attachment.run_angle(700, 50, wait=False)
+gyro_straight(790)
+right_turn(90)
+gyro_straight(110)
+right_turn(53)
+# gyro_reverse(20)
+left_attachment.run_angle(900,-330)
+gyro_straight(90)
+left_attachment.run_angle(900,150)
+wait(500)
+left_turn(-23, thresh = 5, tspeed=400)
+left_attachment.run_angle(900,150)
+gyro_reverse(230)
+left_attachment.run_angle(700,-250)
+left_turn(-49, thresh = 5)
+left_attachment.run_angle(700,600)
+gyro_reverse(100)
+right_turn(100, thresh =10, tspeed=500)
+gyro_straight(700, speed=1200)
+# gyro_straight(600)
+# right_turn(57)
+# gyro_straight(150)
+# left_attachment.run_angle(200,600)
+# wait(1000)
+# left_attachment.run_angle(200, -450)
+# gyro_straight(20)
+# right_turn(73)
+# gyro_straight(30)
+# left_attachment.run_angle(300,170)
+# left_turn(-30, tspeed=550, thresh=10)
+# left_attachment.run_angle(300, 170)
+# wait(200)
+# gyro_reverse(250)
+# right_turn(65)
+# gyro_straight(700, speed=1000)
