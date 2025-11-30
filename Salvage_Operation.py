@@ -1,0 +1,84 @@
+from pybricks.hubs import PrimeHub
+from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSensor
+from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
+from pybricks.robotics import DriveBase
+from pybricks.tools import wait, StopWatch
+
+hub = PrimeHub()
+
+left_motor = Motor(Port.A,Direction.COUNTERCLOCKWISE)
+
+
+
+
+right_motor = Motor(Port.E,Direction.CLOCKWISE)
+
+right_attachment = Motor(Port.B)
+left_attachment = Motor(Port.F)
+
+robot = DriveBase(left_motor,right_motor, 56, 110)
+
+def right_turn(angle, tspeed=350, thresh= 0.5):
+    hub.imu.reset_heading(0)
+    wait(100)
+    while True:
+        speed = angle - hub.imu.heading()
+        robot.drive(0, speed * tspeed/100)
+        if speed < thresh and speed > 0 - thresh:
+            break
+        wait(50)
+    robot.stop()
+
+def left_turn(angle, tspeed=350, thresh= 1):
+    hub.imu.reset_heading(0)
+    wait(100)
+    while True: 
+        heading = hub.imu.heading()
+        speed = angle - heading
+        robot.drive(0, speed * tspeed/100)  # Same as right_turn, but uses 'turned'
+        if speed < thresh and speed > 0-thresh:
+            break
+        wait(50)
+    robot.stop()
+
+def gyro_straight(distance, speed=300, thresh= 0):
+    robot.reset()
+    hub.imu.reset_heading(0)
+    while robot.distance() < distance:
+        error = hub.imu.heading()
+        if error > thresh or error < 0 - thresh:
+            robot.drive(speed, 6 * (0 - error))
+        wait(10)
+    robot.stop()
+
+def gyro_reverse(distance, speed=300, thresh= 0):
+    robot.reset()
+    hub.imu.reset_heading(0)
+    while 0 - robot.distance() < distance:
+        error = hub.imu.heading()
+        if error > thresh or error < 0 - thresh:
+            robot.drive(0-speed, 6 * (0 - error))
+
+
+        wait(10)
+    robot.stop()
+
+
+gyro_straight(510)
+right_attachment.run_angle(500, -500)
+gyro_reverse(100)
+right_attachment.run_angle(500, 600)
+left_turn(-20)
+gyro_straight(260)
+robot.turn(20)#This works because in our function, the robot stops
+gyro_straight(70,speed=105)
+gyro_reverse(650, speed=700)
+  
+# gyro_straight(216)
+# right_turn(105,thresh=5)
+# gyro_straight(120)
+# left_turn(-9)
+# left_attachment.run_angle(15500,8000)
+# gyro_reverse(60)
+# left_turn(-65)
+# gyro_straight(650, speed=900)
