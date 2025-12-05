@@ -127,7 +127,7 @@ def mission_2():
     right_attachment.run_angle(500, 120, wait=False)
     left_attachment.run_angle(500, 120, wait=True)
 
-    gyro_straight(400)
+    gyro_straight(420)
     for i in range(0, 4):
         right_attachment.run_angle(800, -120, wait=False)
         left_attachment.run_angle(800, -120, wait=True)
@@ -135,8 +135,8 @@ def mission_2():
         left_attachment.run_angle(800, 120, wait=True)
 
     gyro_reverse(20)
-    left_turn(-60)
-    gyro_straight(200)
+    left_turn(-65)
+    gyro_straight(185)
     left_turn(-160)
     gyro_straight(500, speed=1000)
 
@@ -186,9 +186,7 @@ def mission_7():
     left_turn(-30, tspeed=500, thresh =5)
     gyro_reverse(600, speed= 700)
 def mission_8():
-    gyro_straight(270)
-    right_turn(58)
-    gyro_straight(300)
+    gyro_straight(400)
     left_attachment.run_angle(600, 700)
     gyro_reverse(700)
 cm = 0
