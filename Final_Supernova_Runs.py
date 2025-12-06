@@ -102,8 +102,8 @@ def mission_1():
 def mission_3():
     # What's on sale tip the scale
     gyro_straight(200)
-    left_turn(-47)
-    gyro_straight(220)
+    left_turn(-46)
+    gyro_straight(200)
     left_attachment.run_angle(700, -500)
     gyro_reverse(10)
 # right_turn(5, thresh =1)
@@ -112,11 +112,11 @@ def mission_3():
     gyro_reverse(100)
     left_attachment.run_angle(700, 300, wait = False)
     gyro_straight(20)
-    gyro_reverse(100)
-    left_turn(-50, thresh = 2)
-    gyro_straight(410)
-    right_turn(90, thresh = 2, tspeed=500)
-    gyro_straight(70)
+    gyro_reverse(140)
+    left_turn(-55, thresh = 2)
+    gyro_straight(420)
+    right_turn(90, thresh = 2)
+    gyro_straight(80)
     gyro_reverse(70, speed=200)
     right_turn(100, thresh = 5, tspeed=500)
     gyro_straight(500, speed=1000)
@@ -177,16 +177,16 @@ def mission_6():
 
 def mission_7():
     # Mineshaft Explorer
-    gyro_straight(500)
-    right_turn(42,thresh = 5, tspeed= 500)
+    gyro_straight(550)
+    right_turn(47,thresh = 5, tspeed= 500)
     right_attachment.run_angle(700, -500)
-    gyro_straight(200)
-    right_attachment.run_angle(900, 700)
+    gyro_straight(250)
+    right_attachment.run_angle(900, 900)
     gyro_reverse(200)
     left_turn(-30, tspeed=500, thresh =5)
     gyro_reverse(600, speed= 700)
 def mission_8():
-    gyro_straight(400)
+    gyro_straight(500)
     left_attachment.run_angle(600, 700)
     gyro_reverse(700)
 cm = 0
