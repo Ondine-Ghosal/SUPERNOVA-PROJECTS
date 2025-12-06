@@ -84,7 +84,7 @@ def mission_1():
     gyro_reverse(100)
     left_attachment.run_angle(900, -600)
     gyro_straight(100)
-    left_attachment.run_angle(900, 1000)
+    left_attachment.run_angle(500, 1000)
     gyro_reverse(50)
     
     
@@ -99,8 +99,8 @@ def mission_1():
 
 def mission_3():
     # What's on sale tip the scale
-    gyro_straight(200)
-    left_turn(-46)
+    gyro_straight(190)
+    left_turn(-45)
     gyro_straight(200)
     left_attachment.run_angle(700, -500)
     gyro_reverse(10)
@@ -110,11 +110,11 @@ def mission_3():
     gyro_reverse(100)
     left_attachment.run_angle(700, 300, wait = False)
     gyro_straight(20)
-    gyro_reverse(140)
-    left_turn(-55, thresh = 2)
-    gyro_straight(420)
+    gyro_reverse(60)
+    left_turn(-65, thresh = 2)
+    gyro_straight(390)
     right_turn(90, thresh = 2)
-    gyro_straight(80)
+    gyro_straight(75)
     gyro_reverse(70, speed=200)
     right_turn(100, thresh = 5, tspeed=500)
     gyro_straight(500, speed=1000)
@@ -125,7 +125,7 @@ def mission_2():
     right_attachment.run_angle(500, 120, wait=False)
     left_attachment.run_angle(500, 120, wait=True)
 
-    gyro_straight(420)
+    gyro_straight(400)
     for i in range(0, 4):
         right_attachment.run_angle(800, -120, wait=False)
         left_attachment.run_angle(800, -120, wait=True)
@@ -161,25 +161,28 @@ def mission_5():
     gyro_reverse(500)
 def mission_6():
     # Map Reveal
-    gyro_straight(235)
+    gyro_straight(220)
     left_turn(-90)
-    gyro_straight(615)
-    left_turn(-50)
-    gyro_straight(300, speed=200)
-    gyro_reverse(25, speed=200)
-    right_attachment.run_angle(500, 1000,wait=True)
-    gyro_straight(35, speed=400)
+    gyro_straight(600)
+    left_turn(-40, tspeed=200)
+    robot.straight(220)
+    gyro_reverse(20, speed=200)
+    right_attachment.run_angle(500, 1000)
+    gyro_reverse(40, speed=600)
+    gyro_straight(100)
+# gyro_straight(35, speed=400)
     gyro_reverse(50)
     right_turn(80, thresh=30)
-    gyro_reverse(900, speed=700)
+    gyro_reverse(900, speed=1000)
 
 def mission_7():
     # Mineshaft Explorer
-    gyro_straight(550)
-    right_turn(47,thresh = 5, tspeed= 500)
+    gyro_straight(540)
+    right_turn(45,thresh = 5, tspeed= 500)
     right_attachment.run_angle(700, -500)
-    gyro_straight(230)
-    right_attachment.run_angle(900, 600)
+    gyro_straight(190)
+    right_attachment.run_angle(900, 500)
+    wait(3)
     gyro_reverse(200)
     left_turn(-30, tspeed=500, thresh =5)
     gyro_reverse(600, speed= 700)
