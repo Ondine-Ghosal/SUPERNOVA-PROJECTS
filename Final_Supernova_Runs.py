@@ -86,9 +86,7 @@ def mission_1():
     gyro_straight(100)
     left_attachment.run_angle(900, 1000)
     gyro_reverse(50)
-    left_turn(-20, thresh =5)
-    gyro_reverse(100)
-    right_turn(10)
+    
     
 
     '''wait(50)
