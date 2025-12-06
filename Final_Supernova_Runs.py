@@ -157,7 +157,7 @@ def mission_4():
     gyro_reverse(400, speed=1000)
 def mission_5():
     # Salvage Operation
-    gyro_straight(630, 200)
+    gyro_straight(670, 200)
     right_attachment.run_angle(700, -300)
     right_attachment.run_angle(700, 300)
     gyro_reverse(500)
@@ -180,15 +180,18 @@ def mission_7():
     gyro_straight(550)
     right_turn(47,thresh = 5, tspeed= 500)
     right_attachment.run_angle(700, -500)
-    gyro_straight(250)
-    right_attachment.run_angle(900, 900)
+    gyro_straight(230)
+    right_attachment.run_angle(900, 600)
     gyro_reverse(200)
     left_turn(-30, tspeed=500, thresh =5)
     gyro_reverse(600, speed= 700)
 def mission_8():
-    gyro_straight(500)
+    gyro_straight(250)
+    right_turn(30, tspeed=500)
+    gyro_straight(300)
     left_attachment.run_angle(600, 700)
     gyro_reverse(700)
+    
 cm = 0
 def make_decision():
     global cm
